@@ -1,8 +1,13 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Formulario de registro
+      Chat Examen
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="showInstructions()" title="Instrucciones">
+        <ion-icon slot="icon-only" name="help-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -11,11 +16,19 @@
     <ion-item *ngFor="let msg of messages">
       <ion-label>
         <h3>{{ msg.sender }}</h3>
-        <ng-container *ngIf="msg.text.includes('https://www.google.com/maps'); else normalMsg">
-          <a [href]="msg.text" target="_blank">{{ msg.text }}</a>
+
+        <ng-container *ngIf="msg.text.startsWith('data:image') || msg.text.endsWith('.png') || msg.text.endsWith('.jpg') || msg.text.endsWith('.jpeg'); else checkMap">
+          <img [src]="msg.text" alt="Imagen enviada" style="max-width: 100%; border-radius: 10px;" />
         </ng-container>
+
+        <ng-template #checkMap>
+          <ng-container *ngIf="msg.text.includes('google.com/maps'); else normalMsg">
+            <a [href]="msg.text" target="_blank">{{ msg.text }}</a>
+          </ng-container>
+        </ng-template>
+
         <ng-template #normalMsg>
-          <p>{{ msg.text }}</p>
+          <p [innerText]="msg.text"></p>
         </ng-template>
       </ion-label>
     </ion-item>
@@ -24,8 +37,9 @@
 
 <ion-footer>
   <ion-toolbar>
-    <ion-input [(ngModel)]="newMessage" placeholder="Escribe un mensaje" fill="outline"></ion-input>
+    <ion-input [(ngModel)]="newMessage" placeholder="Escribe un mensaje o para buscar un pokemos asi Ejem: /pokemon charmander" fill="outline"></ion-input>
     <ion-button expand="block" (click)="sendMessage()">Enviar</ion-button>
-    <ion-button expand="block" color="tertiary" (click)="sendLocation()">Enviar ubicación</ion-button>
+    <ion-button expand="block" color="medium" (click)="sendLocation()">Ubicación</ion-button>
+    <ion-button expand="block" color="secondary" (click)="sendPhoto()">Foto</ion-button>
   </ion-toolbar>
 </ion-footer>
