@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Formulario de registro
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let msg of messages">
+      <ion-label>
+        <h3>{{ msg.sender }}</h3>
+        <ng-container *ngIf="msg.text.includes('https://www.google.com/maps'); else normalMsg">
+          <a [href]="msg.text" target="_blank">{{ msg.text }}</a>
+        </ng-container>
+        <ng-template #normalMsg>
+          <p>{{ msg.text }}</p>
+        </ng-template>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-input [(ngModel)]="newMessage" placeholder="Escribe un mensaje" fill="outline"></ion-input>
+    <ion-button expand="block" (click)="sendMessage()">Enviar</ion-button>
+    <ion-button expand="block" color="tertiary" (click)="sendLocation()">Enviar ubicación</ion-button>
+  </ion-toolbar>
+</ion-footer>
