@@ -31,3 +31,6 @@ Este examen consiste en el desarrollo de una aplicación móvil con funcionalida
 ![image](https://github.com/user-attachments/assets/ff1d462e-9340-4749-a105-416fb25b6cac)
 ![image](https://github.com/user-attachments/assets/b1a9fd06-cac3-4e8f-ba58-f40db594fd91)
 ![image](https://github.com/user-attachments/assets/85b79977-2d1d-4e1c-989e-cf183f882ce4)
+![image](https://github.com/user-attachments/assets/b9d500fe-7a9f-45f5-a0e8-57856bde1303)
+![image](https://github.com/user-attachments/assets/c9b3e69c-58ea-474b-8c03-f318ae7f2f1b)
+![image](https://github.com/user-attachments/assets/e77cc499-7a55-41c7-ad9a-bb4b29f56a37)
